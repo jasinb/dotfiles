@@ -1,0 +1,48 @@
+set nocompatible
+set t_Co=256
+"colorscheme mustang
+"set background=dark
+syntax on
+set history=1000
+set ruler
+set showmode
+set showcmd
+set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)
+set backspace=indent,eol,start
+set linespace=0
+set nu
+set showmatch
+set incsearch
+set hlsearch
+set scrolljump=1
+set number
+set nowrap
+
+" tabs and indentation
+
+" indent automatically
+set autoindent
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set smarttab
+set expandtab
+set copyindent
+"NO smartindent as it seems to insert spaces?!
+"set smartindent
+
+" 
+
+set smartcase
+set undolevels=1000
+set title
+set visualbell
+set noerrorbells
+filetype plugin indent on
+set cursorline
+hi CursorLine term=none cterm=none "disable underlining on cursorline
+set pastetoggle=<F12>
+set nobackup
+set noswapfile
+map <F9> :make
+set langmenu=en
