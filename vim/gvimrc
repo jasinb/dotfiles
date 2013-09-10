@@ -1,3 +1,12 @@
-set guifont=Consolas:h8:cANSI
+" set font
+" TODO: does this work in MacVim?
+if has("gui_running")
+    if has("gui_gtk2")
+        set guifont=Inconsolata\ 9 
+    elseif has("gui_win32")
+        set guifont=Consolas:h8:cANSI
+    endif
+endif
+
 set lines=60
 set columns=120
