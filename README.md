@@ -5,8 +5,11 @@ Clone repo:
 
     git clone https://github.com/jasinb/dotfiles.git
 
-Link .vimrc, .gvimrc
+Update plugins etc
+    
+    cd dotfiles && git submodule update
 
-    ln -s dotfiles/vim/vimrc ~/.vimrc
-    ln -s dotfiles/vim/gvimrc ~/.gvimrc
-    ln -s dotfiles/vim ~/.vim
+Install
+
+    ./install.sh
+

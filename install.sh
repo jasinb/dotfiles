@@ -1,6 +1,9 @@
 #!/bin/sh
 
+# TODO: detect mingw, act accordingly!
+
 # bash, append into corresponding files
+
 
 for f in $(pwd)/bash/*
 do
