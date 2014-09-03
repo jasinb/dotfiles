@@ -31,3 +31,4 @@ PS1="\$(parse_git_branch)$PS1"
 }
 
 proml
+alias ls='ls -phsA --color=auto'
