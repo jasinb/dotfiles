@@ -7,7 +7,7 @@ Clone repo:
 
 Update plugins etc
     
-    cd dotfiles && git submodule update
+    cd dotfiles && git submodule update --init
 
 Install
 
