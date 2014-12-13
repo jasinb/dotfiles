@@ -1,4 +1,18 @@
-export EDITOR=vim
+unamestr=`uname`
+echo "Initializing $unamestr (dotfiles/bashrc)"
+
+# TODO: take non-GUI sessions into account
+if [[ "$unamestr" == "Darwin" ]]; then
+    export EDITOR='mvim -f'
+    export VISUAL=$EDITOR
+    export GIT_EDITOR=$EDITOR
+    export PATH=$(brew --prefix coreutils)/libexec/gnubin:$PATH
+elif [[ "$unamestr" == "Linux" ]]; then
+    # TODO: actually use gvim in GUI-sessions
+    export EDITOR=vim
+    export VISUAL=$EDITOR
+    export GIT_EDITOR=$EDITOR
+fi
 
 # git branch in prompt
 function parse_git_branch {

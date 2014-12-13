@@ -3,7 +3,7 @@ dotfiles
 
 Clone repo:
 
-    git clone https://github.com/jasinb/dotfiles.git
+    git clone git@github.com:jasinb/dotfiles.git
 
 Update plugins etc
     
@@ -13,3 +13,4 @@ Install
 
     ./install.sh
 
+Restart your shell
