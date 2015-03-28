@@ -16,11 +16,17 @@ fi
 
 # git branch in prompt
 function parse_git_branch {
-  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1) /'
+    branch=`git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1 /'`
+    if [ -n "$branch" ]
+    then
+        echo -e "\xF0\x9F\x8C\xB2 $branch"
+    fi
 }
 
 function proml {
+  local        CYAN="\[\033[0;36m\]"
   local        BLUE="\[\033[0;34m\]"
+  local  LIGHT_BLUE="\[\033[1;34m\]"
   local         RED="\[\033[0;31m\]"
   local   LIGHT_RED="\[\033[1;31m\]"
   local       GREEN="\[\033[0;32m\]"
@@ -36,13 +42,17 @@ function proml {
     ;;
   esac
 
-#PS1="${TITLEBAR}\
-#\u@\h:\w$WHITE\$(parse_git_branch)\
-#$LIGHT_GRAY> "
+PS1="${TITLEBAR}\
+\360\237\222\273 $GREEN\u@\h $CYAN\360\237\225\227 \t \360\237\223\202 $LIGHT_BLUE\w$WHITE \$(parse_git_branch)\
+$LIGHT_GRAY\342\232\241 "  
 #PS2='> '
 #PS4='+ '
-PS1="\$(parse_git_branch)$PS1"
+#PS1="\$(parse_git_branch)$PS1"
 }
 
 proml
 alias ls='ls -phsA --color=auto'
+export WORKON_HOME=~/venvs
+source /usr/local/bin/virtualenvwrapper.sh
+
+export AWS_DEFAULT_REGION=us-east-1
