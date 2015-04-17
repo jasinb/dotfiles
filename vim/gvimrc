@@ -8,5 +8,5 @@ if has("gui_running")
     endif
 endif
 
-set lines=50
-set columns=80
+set lines=60
+set columns=120
