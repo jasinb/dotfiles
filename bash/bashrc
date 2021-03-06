@@ -18,10 +18,10 @@ export LC_ALL=$LC_CTYPE
 
 # git branch in prompt
 function parse_git_branch {
-    branch=`git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1 /'`
+    branch=`git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`
     if [ -n "$branch" ]
     then
-        echo -e "\xF0\x9F\x8C\xB2 $branch"
+        echo -e "($branch)"
     fi
 }
 
@@ -34,7 +34,8 @@ function proml {
   local       GREEN="\[\033[0;32m\]"
   local LIGHT_GREEN="\[\033[1;32m\]"
   local       WHITE="\[\033[1;37m\]"
-  local  LIGHT_GRAY="\[\033[0;37m\]"
+  local       BLACK="\[\033[0;30m\]"
+  local DEFAULT_COLOR="\[\033[0;39m\]"
   case $TERM in
     xterm*)
     TITLEBAR='\[\033]0;\u@\h:\w\007\]'
@@ -45,8 +46,8 @@ function proml {
   esac
 
 PS1="${TITLEBAR}\
-\360\237\222\273 $GREEN\u@\h $CYAN\360\237\225\227 \t \360\237\223\202 $LIGHT_BLUE\w$WHITE \$(parse_git_branch)\
-$LIGHT_GRAY\342\232\241 "  
+$GREEN\u@\h $CYAN\t $LIGHT_BLUE\w$BLACK \$(parse_git_branch)\
+$DEFAULT_COLOR\$ "  
 #PS2='> '
 #PS4='+ '
 #PS1="\$(parse_git_branch)$PS1"
@@ -58,3 +59,10 @@ export WORKON_HOME=~/venvs
 source /usr/local/bin/virtualenvwrapper.sh
 
 export AWS_DEFAULT_REGION=us-east-1
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+    . $(brew --prefix)/etc/bash_completion
+fi
+source ~/.aws_keys
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi

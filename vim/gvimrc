@@ -1,5 +1,4 @@
-" set font
-" TODO: does this work in MacVim?
+"set font
 if has("gui_running")
     if has("gui_gtk2")
         set guifont=Inconsolata\ 9 
